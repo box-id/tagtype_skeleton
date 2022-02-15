@@ -1,0 +1,55 @@
+{
+  "name": "@boxid/tagtype_skeleton",
+  "version": "1.0.0",
+  "description": "Skeleton Code for BOX-ID shared configuration, encoder and decoder of devices",
+  "main": "index.js",
+  "volta": {
+    "node": "16.14.0"
+  },
+  "scripts": {
+    "compile": "npm run clear; npm run prod-compile",
+    "prod-compile": "tsc --sourceMap false",
+    "dev-compile": "tsc -w",
+    "dev": "npm run clear; watch 'npm run test' src",
+    "test": "mocha --timeout 2000 -r ts-node/register --grep \"$MOCHA_GREP\" src/test/**/*.test.ts",
+    "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha --timeout 10000 -r ts-node/register src/test/**/*.test.ts && nyc report",
+    "lint": "eslint . --ext .ts",
+    "clear": "rm -rf ./encode ./decode ./config ./*.js ./*.js.map ./*.d.ts  ./test",
+    "check": "npm run depcheck && npm run lint && npm run test && npm run compile",
+    "depcheck": "depcheck ./ --ignore-dirs=_dev,.*,dist --ignores=ts-node,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,eslint-config-prettier",
+    "preversion": "npm run check",
+    "postversion": "git push origin; git push --tags; npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackbox-solutions/tagtype_skeleton.git"
+  },
+  "author": "mpneuried",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blackbox-solutions/tagtype_skeleton/issues"
+  },
+  "homepage": "https://github.com/blackbox-solutions/tagtype_skeleton#readme",
+  "dependencies": {
+    "@boxid/common_ts_interfaces": "^2.5.0",
+    "debug": "^4.3.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.0",
+    "@types/chai-subset": "^1.3.3",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^17.0.18",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "chai": "^4.3.6",
+    "chai-subset": "^1.6.0",
+    "depcheck": "^1.4.3",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.3.0",
+    "mocha": "^9.2.0",
+    "nyc": "^15.1.0",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5",
+    "watch": "^1.0.2"
+  }
+}

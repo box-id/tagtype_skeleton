@@ -1,0 +1,23 @@
+{
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "compilerOptions": {
+        "rootDir": "./src/",
+        "outDir": "./",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es6",
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "declaration": true,
+        "esModuleInterop": true
+    },
+    "exclude": ["node_modules/", "test", "dist", "_dev"],
+    "awesomeTypescriptLoaderOptions": {
+        "silent": true
+    }
+}
