@@ -9,6 +9,6 @@ interface IMessageHeader extends IVals {
 export function decodeHeader(byte: number): IMessageHeader {
     return {
         batt: byte >> 6,
-        type: ((byte & 0x38) >> 4),
+        type: ((byte & 0x30) >> 4),
     };
 }
