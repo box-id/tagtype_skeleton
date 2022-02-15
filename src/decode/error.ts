@@ -10,7 +10,7 @@ export class DecoderError extends Error {
     constructor(type: string, buff: Buffer) {
         super(type);
         this.name = type;
-        this.message = this.ErrorTypes[type] || "Unkown error type. No details ...";
+        this.message = this.ErrorTypes[type] || "Unknown error type. No details ...";
         this.rawInput = buff.toString("hex").toLowerCase();
     }
 }

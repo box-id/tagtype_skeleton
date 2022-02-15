@@ -12,9 +12,9 @@ chai.use(chaiSubset)
 
 const SETTING_DEFAULTS: ITagSettingsSkeletonSaved = getKeyOfConfig()
 
-const SETTING_MINS: ITagSettingsSkeletonSaved = getKeyOfConfig("min")
+const SETTING_MIN: ITagSettingsSkeletonSaved = getKeyOfConfig("min")
 
-const SETTING_MAXS: ITagSettingsSkeletonSaved = getKeyOfConfig("max")
+const SETTING_MAX: ITagSettingsSkeletonSaved = getKeyOfConfig("max")
 
 describe("Encoder base format tests", () => {
     it("defaults empty", (done) => {
@@ -114,7 +114,7 @@ describe("Encoder base format tests", () => {
     })
 
     it("all max", (done) => {
-        const expSettings = { ...SETTING_MAXS }
+        const expSettings = { ...SETTING_MAX }
         const exp = [
             // header
             "10",
@@ -144,7 +144,7 @@ describe("Encoder base format tests", () => {
     it("all slightly over max", (done) => {
         const expSettings = {
             ...SETTING_DEFAULTS,
-            numeric_setting_key: SETTING_MAXS.numeric_setting_key,
+            numeric_setting_key: SETTING_MAX.numeric_setting_key,
             define_string_key: "1122334455",
         }
         const settings = {
@@ -201,7 +201,7 @@ describe("Encoder base format tests", () => {
             "00",
             "00",
         ]
-        const res = Encoder({ ...SETTING_MINS }, undefined, { type: "BASE", requestOneMoreFrame: true })
+        const res = Encoder({ ...SETTING_MIN }, undefined, { type: "BASE", requestOneMoreFrame: true })
         expect(res).property("response")
         testResponse(res.response, exp)
 

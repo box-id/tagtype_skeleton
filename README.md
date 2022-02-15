@@ -1,4 +1,4 @@
-# Tagtype decooder Skeleton
+# Tagtype decoder Skeleton
 
 _Skeleton Code for BOX-ID shared configuration, encoder and decoder of devices._
 
@@ -40,7 +40,7 @@ But there are some keys with special meanings in the processing after the raw da
     Example: `[52.0116, 11.8523, 1342]`
 -   **`geo_source`** _(`Number`)_:
     A description to inform the system the position source.
-    `0` _UNKOWN_: Unkown position source _( GUI-Color: gray )_
+    `0` _UNKNOWN_: Unknown position source _( GUI-Color: gray )_
     `1` _SCELL_: computedLocation.source = 2 - Sigfox simple cell position _( GUI-Color: gray )_
     `2` _SML_: computedLocation.source = 3 - Sigfox machine learning POI _( GUI-Color: gray )_
     `3` _SHD_: computedLocation.source = 4 - Sigfox HD cell position _( GUI-Color: gray )_

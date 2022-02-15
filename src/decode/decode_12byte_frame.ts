@@ -8,8 +8,8 @@ import { DecoderError } from "./error";
 const debug = DB(`bx:tagtype_Skeleton:decode:12byte_frame`)
 
 enum FrameType {
-    WIFIS_REGULAR,
-    WIFIS_KEEPALIVE,
+    WIFI_REGULAR,
+    WIFI_KEEPALIVE,
 }
 function detectFrameType(buff: Buffer): FrameType | undefined {
     const type0 = buff[0];
@@ -25,10 +25,10 @@ function detectFrameType(buff: Buffer): FrameType | undefined {
     debug("t60", t60);
     // debug("t61", t61)
     if (t00 === 0 && t60 === 0) {
-        return FrameType.WIFIS_REGULAR;
+        return FrameType.WIFI_REGULAR;
     }
     if (t00 === 0 && t60 === 1) {
-        return FrameType.WIFIS_KEEPALIVE;
+        return FrameType.WIFI_KEEPALIVE;
     }
 }
 
@@ -37,8 +37,8 @@ export function decodeMessageLength12(buff: Buffer, ret: IVals): Promise<IVals> 
     const frameType = detectFrameType(buff);
     debug("frameType: %s", frameType);
     switch (frameType) {
-        case FrameType.WIFIS_REGULAR:
-        case FrameType.WIFIS_KEEPALIVE: {
+        case FrameType.WIFI_REGULAR:
+        case FrameType.WIFI_KEEPALIVE: {
             const [macs, typeWifi] = decodeMacs(buff);
             ret.type = typeWifi;
             if (macs != null && macs.length) {
@@ -48,7 +48,7 @@ export function decodeMessageLength12(buff: Buffer, ret: IVals): Promise<IVals> 
                     }
                 );
             }
-            if (frameType === FrameType.WIFIS_REGULAR) {
+            if (frameType === FrameType.WIFI_REGULAR) {
                 ret.mounted = true;
             }
             ret.in_transit = false;

@@ -1,5 +1,5 @@
 /**
- * Decode the Lykaner 5 AIT Data format
+ * Decode Sigfox messages
  */
 import { IVals } from "@boxid/common_ts_interfaces/message"
 import DB from "debug"
