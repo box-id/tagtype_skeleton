@@ -1,4 +1,4 @@
-import { ITagConfig, ITagSettingMessageOpts } from "@boxid/common_ts_interfaces/tagsettings"
+import { ITagSettingMessageOpts } from "@boxid/common_ts_interfaces/tagsettings"
 
 import { configuration } from "./config/configuration"
 import { ITagSettingsSkeleton, ITagSettingsSkeletonSaved } from "./config/interface"
@@ -18,17 +18,6 @@ export interface ITagEncodeDataSkeleton {
     // if groups are used this response will also be stored with the group-key.
     // This is required, so that the gui can compare the current settings with the last send group response so it can mark groups as up to date to if the uplink of this group is pending
     response_BASE?: string
-}
-
-// DEPRECATED: Reduce the settings for the simple view
-export const configurationSimple: ITagConfig = JSON.parse(JSON.stringify(configuration))
-const hiddenSettings = ["define_string_key", "select_value_key"]
-const len = hiddenSettings.length
-for (let idx = 0; idx < len; idx++) {
-    const hideKey = hiddenSettings[idx]
-    Object.assign(configurationSimple[hideKey], {
-        hidden: true,
-    })
 }
 
 /**
